@@ -26,10 +26,11 @@ def pop_range(x, y, min_length=0, max_length=1e10):
 def resub(data):
     data = re.sub('\&#?[a-z0-9]+;', '', data)  # remove HTML entities
     data = re.sub("[^a-z0-9A-Z_ \n\r\.\'?,!ഀ-ഃഅ-ഌഎ-ഐഒ-ഔക-ഹാ-ൃെ-ൈൊ-്ൗൠ-ൣ‌]", "", data)
-    data = ''.join(char for char in data if unicodedata.category(char) != 'Cf')  # remove ZWJ and ZWNJ characters
+    data = data.replace('\u200c', '').replace('\u200d', '')  # remove ZWJ and ZWNJ characters
     data = re.sub(' +', ' ', data)  # remove duplicate white space
     
     return data
+
 
 
 def pre_processing(x, y, min_length, max_length):
