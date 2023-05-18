@@ -1,4 +1,5 @@
 import re
+import unicodedata
 
 def textwrite(path, data):
     with open(path, 'w', encoding='utf-8') as f:
@@ -20,10 +21,12 @@ def pop_range(x, y, min_length=0, max_length=1e10):
     
     return new_x, new_y
 
+
+
 def resub(data):
     data = re.sub('\&#?[a-z0-9]+;', '', data)  # remove HTML entities
     data = re.sub("[^a-z0-9A-Z_ \n\r\.\'?,!ഀ-ഃഅ-ഌഎ-ഐഒ-ഔക-ഹാ-ൃെ-ൈൊ-്ൗൠ-ൣ‌]", "", data)
-    data = re.sub('[' + re.escape('\u200C') + re.escape('\u200D') + ']', '', data)  # remove ZWJ and ZWNJ characters
+    data = ''.join(char for char in data if unicodedata.category(char) != 'Cf')  # remove ZWJ and ZWNJ characters
     data = re.sub(' +', ' ', data)  # remove duplicate white space
     
     return data
