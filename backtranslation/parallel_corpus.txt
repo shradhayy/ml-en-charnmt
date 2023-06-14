@@ -1,0 +1,9 @@
+Source (English): Hello, how are you?
+Translation (Tamil): ['హలో, ఎలా ఉన్నావు?']
+
+Source (English): What is your name?
+Translation (Tamil): ['మీ పేరు ఏమిటి?']
+
+Source (English): I love coding!
+Translation (Tamil): ['నేను ప్రోగ్రామ్ ప్రేమ!']
+
